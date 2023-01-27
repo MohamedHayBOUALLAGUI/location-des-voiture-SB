@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Liste Location</title>
+  <th:block th:insert="~{Fragments :: link}"></th:block>
+</head>
+
+<body>
+
+<div th:insert="~{Fragments :: nav-bar-fragment}"></div>
+<div class="container" style="overflow: auto;margin-top:100px;margin-bottom:200px">
+  <div class="row">
+    <div class="col-12">
+
+      <h2 class="text-info">List Location</h2>
+      <a type="button" class="btn btn-outline-info" href="/user/listeModel">Add
+        Location</a>
+
+      <!-- Check if errorMessage is not null and not empty -->
+
+      <div class="alert alert-dismissible alert-danger mt-2"
+           th:if="${errorMessage}" th:utext="${errorMessage}">
+
+      </div>
+
+      <table class="table table-hover mt-2" th:unless="${errorMessage}">
+        <thead>
+        <tr>
+
+          <th scope="col">Details</th>
+          <th scope="col">Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <th:block th:each="location,state : ${listLocations}">
+          <tr th:class="${state.odd} ? table-secondary : table-light ">
+            <td>
+              <div>
+                <strong>Date Debut:</strong> <span th:utext="${#calendars.format(location.dateDebut,'dd-MMM-yyyy')}"></span>
+              </div>
+
+              <div>
+                <strong>Date Retour:</strong> <span th:utext="${#calendars.format(location.dateRetour,'dd-MMM-yyyy')}"></span>
+              </div>
+
+              <div>
+                <strong>Modele Voiture:</strong> <span th:utext="${location.voiture.model.libelle}"></span>
+              </div>
+
+              <div>
+                <strong>Immatricule Voiture:</strong> <span th:utext="${location.voiture.immatriculation}"></span>
+              </div>
+              <div>
+                <strong>Prix Total:</strong> <span
+                      th:utext="${location.prix}+' DT'"></span>
+              </div>
+            </td>
+
+            <td><a th:href="@{/updateLocation/{id}(id=${location.id})}" class="btn btn-primary">Update</a>
+              <a th:href="@{/deleteLocation/{id}(id=${location.id})}" class="btn btn-danger">Delete</a></td>
+
+          </tr>
+        </th:block>
+
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+</div>
+<!-- Import of script -->
+<th:block th:insert="~{fragments :: body/script}"></th:block>
+
+</body>
+</html>

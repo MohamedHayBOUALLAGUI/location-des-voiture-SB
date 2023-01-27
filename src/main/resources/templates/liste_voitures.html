@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+ 
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Liste des Voitures</title>
+    <th:block th:insert="~{Fragments :: link}"></th:block>
+</head>
+ 
+<body>
+
+<div th:insert="~{Fragments :: nav-bar-fragment}"></div>
+<div class="container" style="overflow: auto;margin-top:100px;margin-bottom:200px">
+    <div class="row">
+        <div class="col-12">
+
+            <h2 class="text-info">Voiture list</h2>
+            <a type="button" class="btn btn-outline-info" href="/admin/addVoiture">Add
+                Voiture</a>
+
+            <!-- Check if errorMessage is not null and not empty -->
+
+            <div class="alert alert-dismissible alert-danger mt-2"
+                 th:if="${errorMessage}" th:utext="${errorMessage}">
+
+            </div>
+
+            <table class="table table-hover mt-2" th:unless="${errorMessage}">
+                <thead>
+                <tr>
+                    <th scope="col"></th>
+                    <th scope="col">Details</th>
+                    <th scope="col">Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                <th:block th:each="voiture,state : ${listVoitures}">
+                    <tr th:class="${state.odd} ? table-secondary : table-light ">
+                        <th scope="row"><div class="img-container"
+                                             th:if="${voiture.imagePath}">
+                                <img th:src="@{|/img/${voiture.imagePath}|}" height="70" />
+                            </div> <!--/* If the product has no image, display default Image. */-->
+                         
+                        </th>
+                        <td>
+                            <div>
+                                <strong>Immatriculation:</strong> <span th:utext="${voiture.immatriculation}"></span>
+                            </div>
+                            <div>
+                                <strong>Date Mise En Circulation:</strong> <span th:utext="${voiture.dateMiseEnCirculation}"></span>
+                            </div>
+                            <div>
+                                <strong>Modele:</strong> <span th:utext="${voiture.model.libelle}"></span>
+                            </div>
+                            <div>
+                                <strong>Prix Jour:</strong> <span
+                                    th:utext="${voiture.prixJour}+' DT'"></span>
+                            </div>
+                        </td>
+
+                        <td><a th:href="@{/admin/editVoiture/{id}(id=${voiture.id})}" class="btn btn-primary"><i class="fa-solid fa-pen-to-square"></i></a>
+                            <a th:href="@{/admin/deleteVoiture/{id}(id=${voiture.id})}" class="btn btn-danger"><i class="fa-solid fa-trash"></i></a></td>
+
+                    </tr>
+                </th:block>
+
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</div>
+<!--Footer-->
+<div th:insert="~{Fragments :: footer-fragment}"></div>
+<!-- Import of script -->
+<th:block th:insert="~{fragments :: body/script}"></th:block>
+<script src="https://kit.fontawesome.com/de2a8e2830.js" crossorigin="anonymous"></script>
+</body>
+ 
+</html>

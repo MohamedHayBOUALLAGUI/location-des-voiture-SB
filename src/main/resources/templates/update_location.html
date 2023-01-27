@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Update Location</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+</head>
+
+<body>
+
+
+<div class="container my-5">
+  <h3> Update Location</h3>
+  <div class="card">
+    <div class="card-body">
+      <div class="col-md-10">
+        <a type="button" class="btn btn-outline-info" href="/locations">Back
+          to list</a>
+        <form th:action="@{/updateLocation/{id}(id=${Location.id})}" th:object="${Location}"
+              method="post" class="col-6">
+          <div class="row">
+            <div class="form-group col-md-8">
+              <label for="dateDebut" class="col-form-label">Date Debut</label>
+              <input type="date" th:field="*{dateDebut}" class="form-control"
+                     id="dateDebut" placeholder="Date Debut" />
+            </div>
+            <div class="form-group col-md-8">
+              <label for="dateRetour" class="col-form-label">Date Retour</label>
+              <input type="date" th:field="*{dateRetour}" class="form-control"
+                     id="dateRetour" placeholder="Date Retour" />
+            </div>
+            <!--<div class="form-group col-md-8">
+              <label for="Modèle" class="col-form-label">Modèle</label>
+              <select th:field="*{model.id}" >
+                <option th:each="modele : ${modelList}"
+                        th:value="${modele.id}" th:text="${modele.libelle}" />
+              </select>
+            </div>-->
+            <div class="col-md-6">
+
+              <input type="submit" class="btn btn-info" value="Update" />
+              <input type="hidden" th:value="${Location.voiture.id}" th:attr="name='voiture.id'"/>
+            </div>
+        </form>
+
+        <br />
+        <!-- Check if errorMessage is not null and not empty -->
+        <div class="alert alert-dismissible alert-danger mt-2"
+             th:if="${errorMessage}" th:utext="${errorMessage}"></div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

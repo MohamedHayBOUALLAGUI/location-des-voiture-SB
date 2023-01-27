@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Liste Utilisateur</title>
+    <th:block th:insert="~{Fragments :: link}"></th:block>
+</head>
+
+<body>
+
+<div th:insert="~{Fragments :: nav-bar-fragment}"></div>
+<div class="container" style="overflow: auto;margin-top:100px;margin-bottom:200px">
+    <div class="row">
+        <div class="col-12">
+
+            <h2 class="text-info">List Utilisateur</h2>
+            <a type="button" class="btn btn-outline-info" href="/addUser">Add
+                Location</a>
+
+            <!-- Check if errorMessage is not null and not empty -->
+
+            <div class="alert alert-dismissible alert-danger mt-2"
+                 th:if="${errorMessage}" th:utext="${errorMessage}">
+
+            </div>
+
+            <table class="table table-hover mt-2" th:unless="${errorMessage}">
+                <thead>
+                <tr>
+
+                    <th scope="col">Details</th>
+                    <th scope="col">Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                <th:block th:each="user,state : ${listUsers}">
+                    <tr th:class="${state.odd} ? table-secondary : table-light ">
+                        <td>
+                            <div>
+                                <strong>Username:</strong> <span th:utext="${user.username}"></span>
+                            </div>
+
+                            <div>
+                                <strong>Cin:</strong> <span th:utext="${user.cin}"></span>
+                            </div>
+
+                            <div>
+                                <strong>adresse:</strong> <span th:utext="${user.adresse}"></span>
+                            </div>
+
+                            <div>
+                                <strong>role:</strong> <span th:utext="${user.role.libelle}"></span>
+                            </div>
+
+                        </td>
+
+                        <td><a th:href="@{/updateUser/{id}(id=${user.id})}" class="btn btn-primary">Update</a>
+                            <a th:href="@{/deleteUser/{id}(id=${user.id})}" class="btn btn-danger">Delete</a></td>
+
+                    </tr>
+                </th:block>
+
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</div>
+<!-- Import of script -->
+<th:block th:insert="~{fragments :: body/script}"></th:block>
+
+</body>
+</html>

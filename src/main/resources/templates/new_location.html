@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Reservation</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+</head>
+
+<body>
+<div class="container my-5">
+    <h3> Ajout Location</h3>
+    <div class="card">
+        <div class="card-body">
+            <div class="col-md-10">
+                <form action="#" th:action="@{/addLocation}" th:object="${LocationForm}"
+                      method="post">
+                    <div class="row">
+                        <div class="form-group col-md-8">
+                            <label for="name" class="col-form-label">Date Debut</label>
+                            <input type="date" th:field="*{dateDebut}" class="form-control"
+                                   id="dateDebut" placeholder="dateDebut" />
+                        </div>
+                        <div class="form-group col-md-8">
+                            <label for="name" class="col-form-label">Date Retour</label>
+                            <input type="date" th:field="*{dateRetour}" class="form-control"
+                                   id="dateRetour" placeholder="dateRetour" />
+                        </div>
+                        <div class="form-group col-md-8" >
+                            <label for="Voiture.immatriculation" class="col-form-label">Immatriculation</label>
+                            <input type="text" th:value="${Voiture.immatriculation}"  class="form-control"
+                                   id="Voiture.immatriculation" placeholder="Immatriculation" />
+
+                        </div>
+
+                        <div class="form-group col-md-8">
+                            <label for="Voiture.model.libelle" class="col-form-label">Modele</label>
+                            <input type="text" th:value="${Voiture.model.libelle}" class="form-control"
+                                   id="Voiture.model.libelle" placeholder="Modele" />
+                        </div>
+
+                        <!--<div class="form-group col-md-8">
+                            <label for="Voiture.prixJour" class="col-form-label">prix du jour</label>
+                            <input type="text" th:utext="${Voiture.prixJour}" class="form-control"
+                                   id="Voiture.prixJour" placeholder="prix du jour" />
+                        </div>
+
+                        <div class="form-group col-md-8">
+                            <label for="prix" class="col-form-label">prix Total</label>
+                            <input type="text" th:field="*{prix}" class="form-control"
+                                   id="prix" placeholder="prix Total" />
+                        </div>-->
+
+
+                        <div class="col-md-6">
+                            <input type="submit" class="btn btn-primary" value=" Submit ">
+                        </div>
+
+                        <a type="button" class="btn btn-outline-info" href="/listeModel">Back
+                            to list</a>
+
+                       <!-- <input type="hidden" id="id" th:field="*{id}"> -->
+                        <input type="hidden" th:value="${Voiture.id}" th:attr="name='voiture.id'"/>
+
+
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+
+</html>

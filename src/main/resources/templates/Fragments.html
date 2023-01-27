@@ -1,0 +1,103 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Voiture list</title>
+
+  <link rel="stylesheet"
+        th:href="@{/webjars/bootswatch/dist/flatly/bootstrap.css}">
+       <link rel="stylesheet" th:href="@{/style/footer.css}"  />
+       <link rel="stylesheet" th:href="@{/style/navbar.css}"  />
+</head>
+
+<body>
+<nav th:fragment="nav-bar-fragment" class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <a class="navbar-brand" href="#">Location Voiture</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse"
+          data-target="#navbarColor01" aria-controls="navbarColor01"
+          aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarColor01">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active"><a class="nav-link" th:href="@{/}">Home
+        <span class="sr-only">(current)</span>
+      </a></li>
+      <li class="nav-item active"><a class="nav-link" th:href="@{/user/listeModel}">Modele Voiture
+        <span class="sr-only">(current)</span>
+      </a></li>
+      <li class="nav-item active"><a class="nav-link" th:href="@{/locations}">Reservation
+        <span class="sr-only">(current)</span>
+      </a></li>
+      <li class="nav-item active"><a class="nav-link" th:href="@{/users}">User
+        <span class="sr-only">(current)</span>
+      </a></li>
+      <li class="nav-item active"><a class="nav-link" th:href="@{/}">About
+        <span class="sr-only">(current)</span>
+      </a></li>
+    </ul>
+  </div>
+</nav>
+<!-- Footer fragment -->
+<div th:fragment="footer-fragment" style="margin-bottom: 0px;" class="footer">
+  <footer class="footer-distributed">
+    <div class="footer-left">
+      <h3>e-<span>RENTAL</span></h3>
+      <!--<p className="footer-links">
+        <a href="/" className="link-1">Home</a>
+        <a href="/">Posts</a>
+        <a href="/">Register</a>
+        <a href="/">Login</a>
+        <a href="/">Contact</a>
+      </p>-->
+      <p class="footer-company-name">e-Rental © 2023</p>
+    </div>
+    <div class="footer-center">
+      <div>
+        <i class="fa-solid fa-location-dot"></i>
+        <p><span>Ariana </span> Tek-up university, Tunisie</p>
+      </div>
+      <div>
+        <i class="fa-sharp fa-solid fa-phone"></i>
+        <p>+216 23 71 93 63</p>
+      </div>
+      <div>
+        <i class="fa-solid fa-envelope"></i>
+        <p>e-car.tekup@gmail.com</p>
+      </div>
+    </div>
+    <div class="footer-right">
+      <p class="footer-company-about">
+        <span>About e-Rental website</span>
+        e-Rental est une agence de location de voitures en ligne, localisée à Ariana en Tunisie.</p>
+      <div class="footer-icons">
+        <a href="/"><i class="fa-brands fa-facebook"></i></a>
+        <a href="/"><i class="fa-brands fa-twitter"></i></a>
+        <a href="/"><i class="fa-brands fa-linkedin-in"></i></a>
+        <a href="/"><i class="fa-brands fa-github"></i></a>
+      </div>
+    </div>
+  </footer>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Import of script -->
+<script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+<script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+<script src="https://kit.fontawesome.com/de2a8e2830.js" crossorigin="anonymous"></script>
+
+</body>
+</html>
